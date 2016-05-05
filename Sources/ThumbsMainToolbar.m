@@ -40,6 +40,8 @@
 {
 	if ((self = [super initWithFrame:frame]))
 	{
+        self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+
         UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:title];
         item.hidesBackButton = YES;
 

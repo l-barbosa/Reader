@@ -51,6 +51,8 @@
 
 	if ((self = [super initWithFrame:frame]))
 	{
+        self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+
         NSMutableArray *leftBarButtonItems = [[NSMutableArray alloc] init];
         NSMutableArray *rightBarButtonItems = [[NSMutableArray alloc] init];
 
