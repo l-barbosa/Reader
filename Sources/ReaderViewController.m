@@ -710,7 +710,7 @@
 
 #pragma mark - ReaderMainToolbarDelegate methods
 
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar doneButton:(UIButton *)button
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar doneButton:(UIBarButtonItem *)button
 {
 #if (READER_STANDALONE == FALSE) // Option
 
@@ -719,7 +719,7 @@
 #endif // end of READER_STANDALONE Option
 }
 
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar thumbsButton:(UIButton *)button
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar thumbsButton:(UIBarButtonItem *)button
 {
 #if (READER_ENABLE_THUMBS == TRUE) // Option
 
@@ -737,7 +737,7 @@
 #endif // end of READER_ENABLE_THUMBS Option
 }
 
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar exportButton:(UIButton *)button
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar exportButton:(UIBarButtonItem *)button
 {
 	if (printInteraction != nil) [printInteraction dismissAnimated:YES];
 
@@ -747,10 +747,10 @@
 
 	documentInteraction.delegate = self; // UIDocumentInteractionControllerDelegate
 
-	[documentInteraction presentOpenInMenuFromRect:button.bounds inView:button animated:YES];
+    [documentInteraction presentOpenInMenuFromBarButtonItem:button animated:YES];
 }
 
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar printButton:(UIButton *)button
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar printButton:(UIBarButtonItem *)button
 {
 	if ([UIPrintInteractionController isPrintingAvailable] == YES)
 	{
@@ -771,7 +771,7 @@
 
 			if (userInterfaceIdiom == UIUserInterfaceIdiomPad) // Large device printing
 			{
-				[printInteraction presentFromRect:button.bounds inView:button animated:YES completionHandler:
+				[printInteraction presentFromBarButtonItem:button animated:YES completionHandler:
 					^(UIPrintInteractionController *pic, BOOL completed, NSError *error)
 					{
 						#ifdef DEBUG
@@ -795,7 +795,7 @@
 	}
 }
 
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar emailButton:(UIButton *)button
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar emailButton:(UIBarButtonItem *)button
 {
 	if ([MFMailComposeViewController canSendMail] == NO) return;
 
@@ -827,7 +827,7 @@
 	}
 }
 
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar markButton:(UIButton *)button
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar markButton:(UIBarButtonItem *)button
 {
 #if (READER_BOOKMARKS == TRUE) // Option
 

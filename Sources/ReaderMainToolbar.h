@@ -25,25 +25,23 @@
 
 #import <UIKit/UIKit.h>
 
-#import "UIXToolbarView.h"
-
 @class ReaderMainToolbar;
 @class ReaderDocument;
 
-@protocol ReaderMainToolbarDelegate <NSObject>
+@protocol ReaderMainToolbarDelegate <UINavigationBarDelegate>
 
 @required // Delegate protocols
 
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar doneButton:(UIButton *)button;
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar thumbsButton:(UIButton *)button;
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar exportButton:(UIButton *)button;
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar printButton:(UIButton *)button;
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar emailButton:(UIButton *)button;
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar markButton:(UIButton *)button;
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar doneButton:(UIBarButtonItem *)button;
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar thumbsButton:(UIBarButtonItem *)button;
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar exportButton:(UIBarButtonItem *)button;
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar printButton:(UIBarButtonItem *)button;
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar emailButton:(UIBarButtonItem *)button;
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar markButton:(UIBarButtonItem *)button;
 
 @end
 
-@interface ReaderMainToolbar : UIXToolbarView
+@interface ReaderMainToolbar : UINavigationBar
 
 @property (nonatomic, weak, readwrite) id <ReaderMainToolbarDelegate> delegate;
 

@@ -25,20 +25,18 @@
 
 #import <UIKit/UIKit.h>
 
-#import "UIXToolbarView.h"
-
 @class ThumbsMainToolbar;
 
-@protocol ThumbsMainToolbarDelegate <NSObject>
+@protocol ThumbsMainToolbarDelegate <UINavigationBarDelegate>
 
 @required // Delegate protocols
 
-- (void)tappedInToolbar:(ThumbsMainToolbar *)toolbar doneButton:(UIButton *)button;
+- (void)tappedInToolbar:(ThumbsMainToolbar *)toolbar doneButton:(UIBarButtonItem *)button;
 - (void)tappedInToolbar:(ThumbsMainToolbar *)toolbar showControl:(UISegmentedControl *)control;
 
 @end
 
-@interface ThumbsMainToolbar : UIXToolbarView
+@interface ThumbsMainToolbar : UINavigationBar
 
 @property (nonatomic, weak, readwrite) id <ThumbsMainToolbarDelegate> delegate;
 
