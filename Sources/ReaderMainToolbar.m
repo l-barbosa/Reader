@@ -57,12 +57,12 @@
         NSMutableArray *rightBarButtonItems = [[NSMutableArray alloc] init];
 
 #if (READER_STANDALONE == FALSE)
-        UIBarButtonItem *doneButton =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonTapped:)];
+        UIBarButtonItem *doneButton =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.delegate action:@selector(doneButtonTapped:)];
         [leftBarButtonItems addObject:doneButton];
 #endif
 
 #if (READER_ENABLE_THUMBS == TRUE)
-        UIBarButtonItem *thumbsButton =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Reader-Thumbs"] style:UIBarButtonItemStylePlain target:self action:@selector(thumbsButtonTapped:)];
+        UIBarButtonItem *thumbsButton =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Reader-Thumbs"] style:UIBarButtonItemStylePlain target:self.delegate action:@selector(thumbsButtonTapped:)];
         [leftBarButtonItems addObject:thumbsButton];
 #endif
 
@@ -70,7 +70,7 @@
         markImageN = [UIImage imageNamed:@"Reader-Mark-N"]; // N image
         markImageY = [UIImage imageNamed:@"Reader-Mark-Y"]; // Y image
 
-        UIBarButtonItem *flagButton =[[UIBarButtonItem alloc] initWithImage:markImageN style:UIBarButtonItemStylePlain target:self action:@selector(markButtonTapped:)];
+        UIBarButtonItem *flagButton =[[UIBarButtonItem alloc] initWithImage:markImageN style:UIBarButtonItemStylePlain target:self.delegate action:@selector(markButtonTapped:)];
         [rightBarButtonItems addObject:flagButton];
 
         markButton = flagButton; markButton.enabled = NO; markButton.tag = NSIntegerMin;
@@ -84,7 +84,7 @@
 
                 if (fileSize < 15728640ull) // Check attachment size limit (15MB)
                 {
-                    UIBarButtonItem *emailButton =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Reader-Email"] style:UIBarButtonItemStylePlain target:self action:@selector(emailButtonTapped:)];
+                    UIBarButtonItem *emailButton =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Reader-Email"] style:UIBarButtonItemStylePlain target:self.delegate action:@selector(emailButtonTapped:)];
                     [rightBarButtonItems addObject:emailButton];
                 }
             }
@@ -96,14 +96,14 @@
 
             if ((printInteractionController != nil) && [printInteractionController isPrintingAvailable])
             {
-                UIBarButtonItem *printButton =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Reader-Print"] style:UIBarButtonItemStylePlain target:self action:@selector(printButtonTapped:)];
+                UIBarButtonItem *printButton =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Reader-Print"] style:UIBarButtonItemStylePlain target:self.delegate action:@selector(printButtonTapped:)];
                 [rightBarButtonItems addObject:printButton];
             }
         }
 
         if (document.canExport == YES) // Document export enabled
         {
-            UIBarButtonItem *exportButton =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Reader-Export"] style:UIBarButtonItemStylePlain target:self action:@selector(exportButtonTapped:)];
+            UIBarButtonItem *exportButton =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Reader-Export"] style:UIBarButtonItemStylePlain target:self.delegate action:@selector(exportButtonTapped:)];
             [rightBarButtonItems addObject:exportButton];
         }
 
@@ -186,38 +186,6 @@
 			completion:NULL
 		];
 	}
-}
-
-#pragma mark - UIButton action methods
-
-- (void)doneButtonTapped:(UIBarButtonItem *)button
-{
-	[self.delegate tappedInToolbar:self doneButton:button];
-}
-
-- (void)thumbsButtonTapped:(UIBarButtonItem *)button
-{
-	[self.delegate tappedInToolbar:self thumbsButton:button];
-}
-
-- (void)exportButtonTapped:(UIBarButtonItem *)button
-{
-	[self.delegate tappedInToolbar:self exportButton:button];
-}
-
-- (void)printButtonTapped:(UIBarButtonItem *)button
-{
-	[self.delegate tappedInToolbar:self printButton:button];
-}
-
-- (void)emailButtonTapped:(UIBarButtonItem *)button
-{
-	[self.delegate tappedInToolbar:self emailButton:button];
-}
-
-- (void)markButtonTapped:(UIBarButtonItem *)button
-{
-	[self.delegate tappedInToolbar:self markButton:button];
 }
 
 @end

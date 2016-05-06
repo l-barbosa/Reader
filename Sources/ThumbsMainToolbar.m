@@ -45,7 +45,7 @@
         UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:title];
         item.hidesBackButton = YES;
 
-        UIBarButtonItem *doneButton =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonTapped:)];
+        UIBarButtonItem *doneButton =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.delegate action:@selector(doneButtonTapped:)];
         item.leftBarButtonItem = doneButton;
 
 #if (READER_BOOKMARKS == TRUE)
@@ -57,7 +57,7 @@
         showControl.segmentedControlStyle = UISegmentedControlStyleBar;
         showControl.selectedSegmentIndex = 0; // Default segment index
         showControl.exclusiveTouch = YES;
-        [showControl addTarget:self action:@selector(showControlTapped:) forControlEvents:UIControlEventValueChanged];
+        [showControl addTarget:self.delegate action:@selector(showControlChanged:) forControlEvents:UIControlEventValueChanged];
 
         UIBarButtonItem *controlItem = [[UIBarButtonItem alloc] initWithCustomView:showControl];
         item.rightBarButtonItem = controlItem;
@@ -67,20 +67,6 @@
 	}
 
 	return self;
-}
-
-#pragma mark - UISegmentedControl action methods
-
-- (void)showControlTapped:(UISegmentedControl *)control
-{
-	[self.delegate tappedInToolbar:self showControl:control];
-}
-
-#pragma mark - UIButton action methods
-
-- (void)doneButtonTapped:(UIBarButtonItem *)button
-{
-	[self.delegate tappedInToolbar:self doneButton:button];
 }
 
 @end

@@ -710,7 +710,7 @@
 
 #pragma mark - ReaderMainToolbarDelegate methods
 
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar doneButton:(UIBarButtonItem *)button
+- (void)doneButtonTapped:(UIBarButtonItem *)button
 {
 #if (READER_STANDALONE == FALSE) // Option
 
@@ -719,7 +719,7 @@
 #endif // end of READER_STANDALONE Option
 }
 
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar thumbsButton:(UIBarButtonItem *)button
+- (void)thumbsButtonTapped:(UIBarButtonItem *)button
 {
 #if (READER_ENABLE_THUMBS == TRUE) // Option
 
@@ -737,7 +737,7 @@
 #endif // end of READER_ENABLE_THUMBS Option
 }
 
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar exportButton:(UIBarButtonItem *)button
+- (void)exportButtonTapped:(UIBarButtonItem *)button
 {
 	if (printInteraction != nil) [printInteraction dismissAnimated:YES];
 
@@ -750,7 +750,7 @@
     [documentInteraction presentOpenInMenuFromBarButtonItem:button animated:YES];
 }
 
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar printButton:(UIBarButtonItem *)button
+- (void)printButtonTapped:(UIBarButtonItem *)button
 {
 	if ([UIPrintInteractionController isPrintingAvailable] == YES)
 	{
@@ -795,7 +795,7 @@
 	}
 }
 
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar emailButton:(UIBarButtonItem *)button
+- (void)emailButtonTapped:(UIBarButtonItem *)button
 {
 	if ([MFMailComposeViewController canSendMail] == NO) return;
 
@@ -827,7 +827,7 @@
 	}
 }
 
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar markButton:(UIBarButtonItem *)button
+- (void)markButtonTapped:(UIBarButtonItem *)button
 {
 #if (READER_BOOKMARKS == TRUE) // Option
 

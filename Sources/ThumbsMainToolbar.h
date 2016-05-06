@@ -31,8 +31,8 @@
 
 @required // Delegate protocols
 
-- (void)tappedInToolbar:(ThumbsMainToolbar *)toolbar doneButton:(UIBarButtonItem *)button;
-- (void)tappedInToolbar:(ThumbsMainToolbar *)toolbar showControl:(UISegmentedControl *)control;
+- (void)doneButtonTapped:(UIBarButtonItem *)button;
+- (void)showControlChanged:(UISegmentedControl *)control;
 
 @end
 

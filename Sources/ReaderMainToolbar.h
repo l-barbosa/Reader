@@ -32,12 +32,12 @@
 
 @required // Delegate protocols
 
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar doneButton:(UIBarButtonItem *)button;
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar thumbsButton:(UIBarButtonItem *)button;
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar exportButton:(UIBarButtonItem *)button;
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar printButton:(UIBarButtonItem *)button;
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar emailButton:(UIBarButtonItem *)button;
-- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar markButton:(UIBarButtonItem *)button;
+- (void)doneButtonTapped:(UIBarButtonItem *)button;
+- (void)thumbsButtonTapped:(UIBarButtonItem *)button;
+- (void)exportButtonTapped:(UIBarButtonItem *)button;
+- (void)printButtonTapped:(UIBarButtonItem *)button;
+- (void)emailButtonTapped:(UIBarButtonItem *)button;
+- (void)markButtonTapped:(UIBarButtonItem *)button;
 
 @end
 
