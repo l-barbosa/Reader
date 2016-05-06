@@ -53,6 +53,13 @@
 	{
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
+        UINavigationItem *item = [[UINavigationItem alloc] init];
+        item.hidesBackButton = YES;
+
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+            item.title = [document.fileName stringByDeletingPathExtension];
+        }
+
         NSMutableArray *leftBarButtonItems = [[NSMutableArray alloc] init];
         NSMutableArray *rightBarButtonItems = [[NSMutableArray alloc] init];
 
@@ -107,10 +114,8 @@
             [rightBarButtonItems addObject:exportButton];
         }
 
-        UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:[document.fileName stringByDeletingPathExtension]];
         item.leftBarButtonItems = leftBarButtonItems;
         item.rightBarButtonItems = rightBarButtonItems;
-        item.hidesBackButton = YES;
         [self pushNavigationItem:item animated:NO];
 	}
 

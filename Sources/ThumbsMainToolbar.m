@@ -42,8 +42,12 @@
 	{
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
-        UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:title];
+        UINavigationItem *item = [[UINavigationItem alloc] init];
         item.hidesBackButton = YES;
+
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+            item.title = title;
+        }
 
         UIBarButtonItem *doneButton =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.delegate action:@selector(doneButtonTapped:)];
         item.leftBarButtonItem = doneButton;
