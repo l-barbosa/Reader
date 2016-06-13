@@ -40,6 +40,8 @@
 @interface ReaderViewController : UIViewController
 
 @property (nonatomic, weak, readwrite) id <ReaderViewControllerDelegate> delegate;
+@property (nonatomic) BOOL showToolbar;
+@property (nonatomic) BOOL showPagebar;
 
 - (instancetype)initWithReaderDocument:(ReaderDocument *)object;
 

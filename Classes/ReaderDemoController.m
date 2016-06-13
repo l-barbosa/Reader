@@ -182,6 +182,7 @@
 	{
 		ReaderViewController *readerViewController = [[ReaderViewController alloc] initWithReaderDocument:document];
 
+        readerViewController.showToolbar = false;
 		readerViewController.delegate = self; // Set the ReaderViewController delegate to self
 
 #if (DEMO_VIEW_CONTROLLER_PUSH == TRUE)
