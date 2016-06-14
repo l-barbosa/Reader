@@ -82,6 +82,7 @@
 #pragma mark - Properties
 
 @synthesize delegate;
+@synthesize backgroundColor = _backgroundColor;
 
 #pragma mark - ReaderViewController methods
 

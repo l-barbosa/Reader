@@ -42,6 +42,7 @@
 @property (nonatomic, weak, readwrite) id <ReaderViewControllerDelegate> delegate;
 @property (nonatomic) BOOL showToolbar;
 @property (nonatomic) BOOL showPagebar;
+@property (nonatomic, strong, readwrite) UIColor *backgroundColor;
 
 - (instancetype)initWithReaderDocument:(ReaderDocument *)object;
 
