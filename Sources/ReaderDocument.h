@@ -46,6 +46,8 @@
 
 + (ReaderDocument *)unarchiveFromFileName:(NSString *)filePath password:(NSString *)phrase;
 
++ (BOOL)isPDF:(NSString *)filePath;
+
 - (instancetype)initWithFilePath:(NSString *)filePath password:(NSString *)phrase;
 
 - (BOOL)archiveDocumentProperties;
