@@ -219,7 +219,9 @@
 			}
 			else // Cupertino, we have a problem with the document
 			{
-				NSAssert(NO, @"CGPDFDocumentRef == NULL");
+				//NSAssert(NO, @"CGPDFDocumentRef == NULL");
+				self = nil;
+				return nil; // avoid crash and just render blank document when file is corrupt
 			}
 
 			_lastOpen = [NSDate dateWithTimeIntervalSinceReferenceDate:0.0];
